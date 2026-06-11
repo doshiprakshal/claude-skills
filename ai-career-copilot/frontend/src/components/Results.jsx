@@ -29,7 +29,7 @@ function BarStat({ label, value }) {
   )
 }
 
-export default function Results({ data }) {
+export default function Results({ data, onGoToProfile }) {
   const [copiedCover, setCopiedCover] = useState(false)
 
   const copyCoverLetter = () => {
@@ -42,6 +42,25 @@ export default function Results({ data }) {
 
   return (
     <div className="space-y-6">
+      {/* Post free-trial nudge */}
+      {data.used_free_trial && (
+        <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl px-6 py-5 flex items-start gap-4">
+          <span className="text-3xl">🎉</span>
+          <div className="flex-1">
+            <p className="font-semibold text-amber-900">You just used your free analysis!</p>
+            <p className="text-amber-700 text-sm mt-1">
+              To run more analyses, add your own Anthropic API key — it takes 30 seconds and costs pennies per analysis.
+            </p>
+            <button
+              onClick={onGoToProfile}
+              className="mt-3 bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold rounded-lg px-4 py-2 transition-colors"
+            >
+              Add my API key →
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* ATS Score + Breakdown */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <ScoreRing score={data.ats_score} />

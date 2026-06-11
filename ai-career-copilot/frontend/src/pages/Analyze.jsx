@@ -26,7 +26,11 @@ export default function Analyze() {
       setResult(data)
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (err) {
-      setError(err.response?.data?.detail || 'Analysis failed. Please try again.')
+      if (err.response?.status === 402) {
+        setError('Free trial used! Please add your Anthropic API key on the Dashboard to continue.')
+      } else {
+        setError(err.response?.data?.detail || 'Analysis failed. Please try again.')
+      }
     } finally {
       setLoading(false)
     }
@@ -60,7 +64,7 @@ export default function Analyze() {
                 ← Analyze another job
               </button>
             </div>
-            <Results data={result} />
+            <Results data={result} onGoToProfile={() => navigate('/')} />
           </>
         ) : (
           <>

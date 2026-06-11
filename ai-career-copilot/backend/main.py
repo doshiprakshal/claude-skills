@@ -39,6 +39,8 @@ class UserModel(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
     resume = Column(Text, nullable=True)
+    anthropic_key = Column(String, nullable=True)   # user's own API key
+    analyses_count = Column(Integer, default=0)     # lifetime analyses run
     created_at = Column(DateTime, default=datetime.utcnow)
 
 
@@ -103,6 +105,10 @@ class ResumeUpdate(BaseModel):
     resume: str
 
 
+class ApiKeyUpdate(BaseModel):
+    anthropic_key: str
+
+
 class AnalyzeRequest(BaseModel):
     job_description: str
     resume: Optional[str] = None  # optional override; otherwise uses saved resume
@@ -115,6 +121,8 @@ class AnalysisResult(BaseModel):
     interview_questions: list[dict]
     salary_estimate: dict
     cover_letter: str
+    analyses_used: int        # how many analyses this user has run (including this one)
+    used_free_trial: bool     # true if this analysis used the owner's key
 
 
 # ── Salary Helper ──────────────────────────────────────────────────────────────
@@ -164,8 +172,8 @@ async def fetch_salary_data(job_title: str, location: str = "us") -> dict:
 
 
 # ── Claude Analysis ───────────────────────────────────────────────────────────
-async def analyze_with_claude(resume: str, job_description: str, salary_data: dict) -> dict:
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+async def analyze_with_claude(resume: str, job_description: str, salary_data: dict, api_key: str) -> dict:
+    client = anthropic.Anthropic(api_key=api_key)
 
     salary_context = json.dumps(salary_data, indent=2)
 
@@ -281,6 +289,8 @@ async def get_profile(current_user: UserModel = Depends(get_current_user)):
         "email": current_user.email,
         "has_resume": bool(current_user.resume),
         "resume": current_user.resume or "",
+        "has_api_key": bool(current_user.anthropic_key),
+        "analyses_count": current_user.analyses_count or 0,
     }
 
 
@@ -289,6 +299,23 @@ async def update_resume(req: ResumeUpdate, current_user: UserModel = Depends(get
     current_user.resume = req.resume
     db.commit()
     return {"message": "Resume saved successfully"}
+
+
+@app.put("/profile/apikey")
+async def update_api_key(req: ApiKeyUpdate, current_user: UserModel = Depends(get_current_user), db: Session = Depends(get_db)):
+    # Validate the key looks like an Anthropic key
+    if not req.anthropic_key.startswith("sk-ant-"):
+        raise HTTPException(status_code=400, detail="Invalid Anthropic API key format. It should start with 'sk-ant-'")
+    current_user.anthropic_key = req.anthropic_key
+    db.commit()
+    return {"message": "API key saved successfully"}
+
+
+@app.delete("/profile/apikey")
+async def delete_api_key(current_user: UserModel = Depends(get_current_user), db: Session = Depends(get_db)):
+    current_user.anthropic_key = None
+    db.commit()
+    return {"message": "API key removed"}
 
 
 # ── Analysis Endpoint ─────────────────────────────────────────────────────────
@@ -302,11 +329,34 @@ async def analyze(req: AnalyzeRequest, current_user: UserModel = Depends(get_cur
         current_user.resume = req.resume
         db.commit()
 
+    analyses_so_far = current_user.analyses_count or 0
+    used_free_trial = False
+
+    # First analysis → use owner's key (free trial)
+    if analyses_so_far == 0:
+        api_key = ANTHROPIC_API_KEY
+        used_free_trial = True
+    else:
+        # Subsequent analyses → require user's own key
+        if not current_user.anthropic_key:
+            raise HTTPException(
+                status_code=402,
+                detail="You've used your free analysis. Please add your Anthropic API key in your profile to continue.",
+            )
+        api_key = current_user.anthropic_key
+
     # Extract job title from first line of JD for salary lookup
     first_line = req.job_description.split("\n")[0][:80]
     salary_data = await fetch_salary_data(first_line)
 
-    result = await analyze_with_claude(resume, req.job_description, salary_data)
+    result = await analyze_with_claude(resume, req.job_description, salary_data, api_key)
+
+    # Increment counter after successful analysis
+    current_user.analyses_count = analyses_so_far + 1
+    db.commit()
+
+    result["analyses_used"] = analyses_so_far + 1
+    result["used_free_trial"] = used_free_trial
     return result
 
 
