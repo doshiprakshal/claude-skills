@@ -8,6 +8,22 @@
   },
   "plugins": [
     {
+      "name": "prepops",
+      "description": "Adaptive AI interview coach for Infrastructure, DevOps, SRE, Cloud, MLOps, and AIOps. 10 learning modes, 5 difficulty levels, 18 knowledge domains. Zero-install via Claude Code.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "learning",
+      "source": {
+        "source": "git",
+        "url": "https://github.com/doshiprakshal/PrepOps.git",
+        "ref": "main",
+        "sha": "1f58e6dc90d528b80008fa6e38401c4711c19475"
+      },
+      "homepage": "https://github.com/doshiprakshal/PrepOps"
+    },
+    {
       "name": "interview-prep",
       "description": "Zero-install interview prep skills for DevOps, SRE, Cloud, Infrastructure, MLOps, and AIOps roles. Skills open directly in the browser — no backend, no npm, no API key required.",
       "author": {
