@@ -1,0 +1,10 @@
+{
+  "name": "interview-prep",
+  "description": "Zero-install interview prep skills for DevOps, SRE, Cloud, Infrastructure, MLOps, and AIOps roles. Skills open directly in the browser — no backend, no npm, no API key required.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "learning",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/interview"
+}
