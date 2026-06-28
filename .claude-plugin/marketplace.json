@@ -23,7 +23,8 @@
       },
       "strict": false,
       "skills": [
-        "./interview-mcq"
+        "./interview-mcq",
+        "./interview-flashcards"
       ],
       "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/interview"
     }

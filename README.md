@@ -44,7 +44,8 @@ Skills for anyone preparing for roles in DevOps, SRE, Cloud, Infrastructure, MLO
 
 | Skill | What it does |
 |-------|-------------|
-| [`interview-mcq`](./interview/interview-mcq) | Generates an interactive MCQ quiz for any DevOps/cloud topic and opens it in your browser |
+| [`interview-mcq`](./interview/interview-mcq) | Interactive MCQ quiz — 4 options, immediate feedback, score ring at the end |
+| [`interview-flashcards`](./interview/interview-flashcards) | Flip-card deck with "Got it / Still learning" tracking and restart-unseen mode |
 
 ```
 /plugin install interview-prep@doshiprakshal
