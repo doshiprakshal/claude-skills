@@ -1,10 +1,31 @@
 # Claude Skills Marketplace
 
-A collection of full-stack AI-powered apps built with Claude. Clone any skill, wire up your API keys, and run it locally in minutes.
+A collection of Claude Code skills and full-stack AI-powered apps. Skills are zero-install — copy a single file and type a slash command. Apps require a local backend or frontend setup.
 
 ---
 
-## Skills
+## Skill Collections
+
+### Interview Prep
+
+**Path:** [`interview/`](./interview) · [Full marketplace →](./interview/README.md)
+
+Skills for DevOps and cloud interview preparation. Zero-install — one `curl` command and you're ready.
+
+| Skill | What it does |
+|-------|-------------|
+| [`interview-mcq`](./interview/interview-mcq) | Generates an interactive MCQ quiz for any DevOps/cloud topic and opens it in your browser |
+
+**Install all interview skills:**
+
+```bash
+git clone https://github.com/doshiprakshal/claude-skills.git
+cp -r claude-skills/interview/*/  ~/.claude/skills/
+```
+
+---
+
+## Apps (local install required)
 
 ### 1. AI Career Copilot
 
