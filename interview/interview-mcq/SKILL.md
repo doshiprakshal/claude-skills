@@ -1,12 +1,12 @@
 ---
 name: interview-mcq
-description: Generate an interactive MCQ quiz for DevOps/cloud interview prep and open it in the browser. No backend or frontend required — Claude generates the questions and writes a self-contained HTML file. Triggers on /interview-mcq, "make me a quiz on kubernetes", "practice MCQs for docker", "generate devops questions", "quiz me on AWS".
+description: Generate an interactive MCQ quiz for DevOps, SRE, Cloud, Infrastructure, MLOps, or AIOps interview prep and open it in the browser. No backend or frontend required — Claude generates the questions and writes a self-contained HTML file. Triggers on /interview-mcq, "make me a quiz on kubernetes", "practice MCQs for docker", "generate devops questions", "quiz me on AWS", "practice SRE questions", "MLOps interview prep", "AIOps quiz".
 user-invocable: true
 ---
 
 # Interview MCQ Quiz Generator
 
-Generate DevOps/cloud multiple-choice questions and deliver them as a self-contained HTML quiz that opens directly in the browser.
+Generate multiple-choice questions for DevOps, SRE, Cloud, Infrastructure, MLOps, and AIOps roles, delivered as a self-contained HTML quiz that opens directly in the browser.
 
 ## Steps
 
@@ -15,9 +15,27 @@ Generate DevOps/cloud multiple-choice questions and deliver them as a self-conta
 If the skill was invoked with args, parse them (e.g. `/interview-mcq kubernetes 15` → category=Kubernetes, n=15). Otherwise ask:
 
 - **Category** (required) — one of:
-  `Kubernetes`, `Docker`, `AWS`, `GCP`, `Azure`, `Terraform`, `Prometheus & Grafana`, `Linux`, `Nginx`, `CI/CD`, `Helm`, `Istio`, `Ansible`, `Elasticsearch`, `PostgreSQL`
+
+  *DevOps & Infrastructure:*
+  `Kubernetes`, `Docker`, `Linux`, `Nginx`, `CI/CD`, `Ansible`, `Terraform`, `Helm`, `Istio`
+
+  *Cloud:*
+  `AWS`, `GCP`, `Azure`
+
+  *Observability & Data:*
+  `Prometheus & Grafana`, `Elasticsearch`, `PostgreSQL`
+
+  *SRE:*
+  `SRE Fundamentals` (SLIs/SLOs/SLAs, error budgets, toil), `Incident Management`, `Chaos Engineering`, `On-Call Practices`
+
+  *MLOps:*
+  `MLflow`, `Kubeflow`, `Model Serving`, `Feature Stores`, `Data Versioning`, `ML Pipelines`
+
+  *AIOps:*
+  `Observability AI`, `Anomaly Detection`, `AIOps Platforms`, `Log Analytics`, `AI-Driven Incident Response`
+
 - **Number of questions** (optional, default 10, max 20)
-- **Specific topic within the category** (optional — e.g. "Pod scheduling", "IAM roles", "Helm hooks")
+- **Specific topic within the category** (optional — e.g. "Pod scheduling", "IAM roles", "error budgets", "model drift")
 
 ### 2. Generate questions
 
@@ -26,7 +44,7 @@ Using your own knowledge, produce exactly N multiple-choice questions for the ch
 Quality rules:
 - Each question must have exactly 4 options (A–D), one correct answer, and a 1–2 sentence explanation of why the correct answer is right and the others are wrong.
 - Mix difficulty: roughly 30% beginner, 50% intermediate, 20% advanced.
-- Questions must be specific and practical — no trivia. A real SRE/DevOps engineer should recognize why the answer matters.
+- Questions must be specific and practical — no trivia. A real practitioner in the chosen domain (SRE, DevOps, MLOps, AIOps, Cloud engineer) should recognize why the answer matters.
 - Never repeat the same concept twice.
 - Avoid questions whose answer is obvious from the phrasing.
 

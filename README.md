@@ -10,7 +10,7 @@ A collection of Claude Code skills and full-stack AI-powered apps. Skills are ze
 
 **Path:** [`interview/`](./interview) · [Full marketplace →](./interview/README.md)
 
-Skills for DevOps and cloud interview preparation. Zero-install — one `curl` command and you're ready.
+Skills for anyone preparing for roles in DevOps, SRE, Cloud, Infrastructure, MLOps, or AIOps. Zero-install — one `curl` command and you're ready.
 
 | Skill | What it does |
 |-------|-------------|

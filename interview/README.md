@@ -1,6 +1,6 @@
 # Interview Prep Skills
 
-A collection of Claude Code skills for DevOps and cloud interview preparation. Each skill is zero-install — copy one file and you're ready.
+A collection of Claude Code skills for anyone preparing for roles in **DevOps, SRE, Cloud, Infrastructure, MLOps, and AIOps**. Each skill is zero-install — copy one file and you're ready.
 
 ## Quick install (all skills)
 
@@ -19,9 +19,19 @@ Or install skills individually — see each skill's section below.
 
 **Path:** [`interview-mcq/`](./interview-mcq)
 
-Generates a multiple-choice quiz for any DevOps/cloud topic and opens it in your browser as a self-contained HTML page. No server, no npm, no API key required.
+Generates a multiple-choice quiz for any topic across DevOps, SRE, Cloud, Infrastructure, MLOps, and AIOps, and opens it in your browser as a self-contained HTML page. No server, no npm, no API key required.
 
-**Categories:** Kubernetes · Docker · AWS · GCP · Azure · Terraform · Prometheus & Grafana · Linux · Nginx · CI/CD · Helm · Istio · Ansible · Elasticsearch · PostgreSQL
+**DevOps & Infrastructure:** Kubernetes · Docker · Linux · Nginx · CI/CD · Ansible · Terraform · Helm · Istio
+
+**Cloud:** AWS · GCP · Azure
+
+**Observability & Data:** Prometheus & Grafana · Elasticsearch · PostgreSQL
+
+**SRE:** SLIs/SLOs/Error Budgets · Incident Management · Chaos Engineering · On-Call Practices
+
+**MLOps:** MLflow · Kubeflow · Model Serving · Feature Stores · Data Versioning · ML Pipelines
+
+**AIOps:** Observability AI · Anomaly Detection · AIOps Platforms · Log Analytics · AI-Driven Incident Response
 
 **Features:**
 - 1–20 questions generated from Claude's own knowledge
