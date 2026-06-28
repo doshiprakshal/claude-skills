@@ -1,0 +1,31 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "doshiprakshal",
+  "description": "Skills for DevOps, SRE, Cloud, Infrastructure, MLOps, and AIOps interview prep — zero-install, browser-based, no API key required.",
+  "owner": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "plugins": [
+    {
+      "name": "interview-prep",
+      "description": "Zero-install interview prep skills for DevOps, SRE, Cloud, Infrastructure, MLOps, and AIOps roles. Skills open directly in the browser — no backend, no npm, no API key required.",
+      "author": {
+        "name": "Prakshal Doshi"
+      },
+      "category": "learning",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "interview",
+        "ref": "main",
+        "sha": "73a2a7926ce324c14f1052d2e648e31314c11e00"
+      },
+      "strict": false,
+      "skills": [
+        "./interview-mcq"
+      ],
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/interview"
+    }
+  ]
+}

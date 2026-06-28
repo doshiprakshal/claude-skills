@@ -1,6 +1,36 @@
 # Claude Skills Marketplace
 
-A collection of Claude Code skills and full-stack AI-powered apps. Skills are zero-install — copy a single file and type a slash command. Apps require a local backend or frontend setup.
+A collection of Claude Code skills and full-stack AI-powered apps.
+
+## Install this marketplace (one time)
+
+Add this repo as a Claude Code marketplace once — after that, every skill installs with a single command, no git required.
+
+**Step 1 — Register the marketplace:**
+
+```bash
+node -e "
+const fs = require('fs');
+const path = require('path');
+const file = path.join(process.env.HOME, '.claude/plugins/known_marketplaces.json');
+const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+data['doshiprakshal'] = {
+  source: { source: 'github', repo: 'doshiprakshal/claude-skills' },
+  installLocation: path.join(process.env.HOME, '.claude/plugins/marketplaces/doshiprakshal'),
+  lastUpdated: new Date().toISOString()
+};
+fs.writeFileSync(file, JSON.stringify(data, null, 2));
+console.log('Marketplace added.');
+"
+```
+
+**Step 2 — Install any skill:**
+
+```
+/plugin install interview-prep@doshiprakshal
+```
+
+That's it. As new skills are added to this repo, they show up in `/plugin > Discover` under the `doshiprakshal` marketplace automatically.
 
 ---
 
@@ -10,17 +40,14 @@ A collection of Claude Code skills and full-stack AI-powered apps. Skills are ze
 
 **Path:** [`interview/`](./interview) · [Full marketplace →](./interview/README.md)
 
-Skills for anyone preparing for roles in DevOps, SRE, Cloud, Infrastructure, MLOps, or AIOps. Zero-install — one `curl` command and you're ready.
+Skills for anyone preparing for roles in DevOps, SRE, Cloud, Infrastructure, MLOps, or AIOps.
 
 | Skill | What it does |
 |-------|-------------|
 | [`interview-mcq`](./interview/interview-mcq) | Generates an interactive MCQ quiz for any DevOps/cloud topic and opens it in your browser |
 
-**Install all interview skills:**
-
-```bash
-git clone https://github.com/doshiprakshal/claude-skills.git
-cp -r claude-skills/interview/*/  ~/.claude/skills/
+```
+/plugin install interview-prep@doshiprakshal
 ```
 
 ---
