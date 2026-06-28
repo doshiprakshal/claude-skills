@@ -38,14 +38,14 @@ That's it. As new skills are added to this repo, they show up in `/plugin > Disc
 
 ### Interview Prep
 
-**Path:** [`interview/`](./interview) · [Full marketplace →](./interview/README.md)
+**Path:** [`ai-infra-devops-sre-cloud-interview-coach/`](./ai-infra-devops-sre-cloud-interview-coach) · [Full marketplace →](./ai-infra-devops-sre-cloud-interview-coach/README.md)
 
 Skills for anyone preparing for roles in DevOps, SRE, Cloud, Infrastructure, MLOps, or AIOps.
 
 | Skill | What it does |
 |-------|-------------|
-| [`interview-mcq`](./interview/interview-mcq) | Interactive MCQ quiz — 4 options, immediate feedback, score ring at the end |
-| [`interview-flashcards`](./interview/interview-flashcards) | Flip-card deck with "Got it / Still learning" tracking and restart-unseen mode |
+| [`interview-mcq`](./ai-infra-devops-sre-cloud-interview-coach/interview-mcq) | Interactive MCQ quiz — 4 options, immediate feedback, score ring at the end |
+| [`interview-flashcards`](./ai-infra-devops-sre-cloud-interview-coach/interview-flashcards) | Flip-card deck with "Got it / Still learning" tracking and restart-unseen mode |
 
 ```
 /plugin install interview-prep@doshiprakshal

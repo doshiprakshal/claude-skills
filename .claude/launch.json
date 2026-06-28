@@ -14,6 +14,13 @@
       "runtimeArgs": ["run", "dev"],
       "port": 5173,
       "cwd": "/Users/prakshal/claude-skills/ai-career-copilot/frontend"
+    },
+    {
+      "name": "interview-lab",
+      "runtimeExecutable": "/opt/homebrew/bin/npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3001,
+      "cwd": "/Users/prakshal/claude-skills/interview-lab-generator"
     }
   ]
 }

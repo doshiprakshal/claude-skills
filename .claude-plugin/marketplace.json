@@ -17,16 +17,16 @@
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/doshiprakshal/claude-skills.git",
-        "path": "interview",
+        "path": "ai-infra-devops-sre-cloud-interview-coach",
         "ref": "main",
-        "sha": "73a2a7926ce324c14f1052d2e648e31314c11e00"
+        "sha": "5c14c65cfda64f55cf07ddcbede863766500219a"
       },
       "strict": false,
       "skills": [
         "./interview-mcq",
         "./interview-flashcards"
       ],
-      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/interview"
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/ai-infra-devops-sre-cloud-interview-coach"
     }
   ]
 }
