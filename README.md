@@ -4,43 +4,60 @@ A collection of Claude Code skills and full-stack AI-powered apps.
 
 ## Install this marketplace (one time)
 
-Add this repo as a Claude Code marketplace once — after that, every skill installs with a single command, no git required.
+Register once — every skill installs with a single command after that.
 
 **Step 1 — Register the marketplace:**
 
 ```bash
-node -e "
-const fs = require('fs');
-const path = require('path');
-const file = path.join(process.env.HOME, '.claude/plugins/known_marketplaces.json');
-const data = JSON.parse(fs.readFileSync(file, 'utf8'));
-data['doshiprakshal'] = {
-  source: { source: 'github', repo: 'doshiprakshal/claude-skills' },
-  installLocation: path.join(process.env.HOME, '.claude/plugins/marketplaces/doshiprakshal'),
-  lastUpdated: new Date().toISOString()
-};
-fs.writeFileSync(file, JSON.stringify(data, null, 2));
-console.log('Marketplace added.');
-"
+curl -fsSL https://raw.githubusercontent.com/doshiprakshal/claude-skills/main/install.sh | bash
 ```
 
-**Step 2 — Install any skill:**
+<details>
+<summary>No curl? Run the node script directly</summary>
+
+```bash
+node << 'SCRIPT'
+const fs = require('fs'), path = require('path');
+const f = path.join(require('os').homedir(), '.claude', 'known_marketplaces.json');
+const d = fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : { marketplaces: [] };
+if (!d.marketplaces.find(m => m.name === 'doshiprakshal'))
+  d.marketplaces.push({ name: 'doshiprakshal', url: 'https://raw.githubusercontent.com/doshiprakshal/claude-skills/main/.claude-plugin/marketplace.json' });
+fs.writeFileSync(f, JSON.stringify(d, null, 2));
+console.log('Registered doshiprakshal marketplace');
+SCRIPT
+```
+
+</details>
+
+**Step 2 — Install any skill inside Claude Code:**
 
 ```
+/plugin install prepops@doshiprakshal
 /plugin install interview-prep@doshiprakshal
 ```
 
-That's it. As new skills are added to this repo, they show up in `/plugin > Discover` under the `doshiprakshal` marketplace automatically.
+New skills added to this marketplace are available immediately — no re-registration needed.
 
 ---
 
-## Skill Collections
+## Skills
 
-### Interview Prep
+### PrepOps — AI Infra Interview Coach
 
-**Path:** [`ai-infra-devops-sre-cloud-interview-coach/`](./ai-infra-devops-sre-cloud-interview-coach) · [Full marketplace →](./ai-infra-devops-sre-cloud-interview-coach/README.md)
+**Repo:** [doshiprakshal/PrepOps](https://github.com/doshiprakshal/PrepOps)
 
-Skills for anyone preparing for roles in DevOps, SRE, Cloud, Infrastructure, MLOps, or AIOps.
+Adaptive AI interview coach for Infrastructure, DevOps, SRE, Cloud, MLOps, and AIOps roles.
+10 learning modes · 9 interviewer personas · 8 company blueprints · production incident simulations · hiring-style feedback reports.
+
+```
+/plugin install prepops@doshiprakshal
+```
+
+---
+
+### Interview Prep (MCQ + Flashcards)
+
+**Path:** [`ai-infra-devops-sre-cloud-interview-coach/`](./ai-infra-devops-sre-cloud-interview-coach)
 
 | Skill | What it does |
 |-------|-------------|
