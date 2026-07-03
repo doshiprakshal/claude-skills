@@ -2,8 +2,7 @@
 set -e
 
 MARKETPLACE_NAME="doshiprakshal"
-MARKETPLACE_URL="https://raw.githubusercontent.com/doshiprakshal/claude-skills/main/.claude-plugin/marketplace.json"
-KNOWN_MARKETPLACES="$HOME/.claude/known_marketplaces.json"
+MARKETPLACE_REPO="doshiprakshal/claude-skills"
 
 echo ""
 echo "doshiprakshal marketplace"
@@ -17,15 +16,19 @@ if ! command -v node &>/dev/null; then
 fi
 
 node << SCRIPT
-const fs = require('fs'), path = require('path');
-const f = '${KNOWN_MARKETPLACES}';
+const fs = require('fs'), path = require('path'), os = require('os');
+const f = path.join(os.homedir(), '.claude', 'plugins', 'known_marketplaces.json');
 const dir = path.dirname(f);
 if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-const d = fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : { marketplaces: [] };
-if (d.marketplaces.find(m => m.name === '${MARKETPLACE_NAME}')) {
+const d = fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : {};
+if (d['${MARKETPLACE_NAME}']) {
   console.log('Marketplace already registered — skipping.');
 } else {
-  d.marketplaces.push({ name: '${MARKETPLACE_NAME}', url: '${MARKETPLACE_URL}' });
+  d['${MARKETPLACE_NAME}'] = {
+    source: { source: 'github', repo: '${MARKETPLACE_REPO}' },
+    installLocation: path.join(os.homedir(), '.claude', 'plugins', 'marketplaces', '${MARKETPLACE_NAME}'),
+    lastUpdated: new Date().toISOString()
+  };
   fs.writeFileSync(f, JSON.stringify(d, null, 2));
   console.log('Marketplace registered.');
 }
