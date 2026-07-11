@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "doshiprakshal",
-  "description": "Skills for DevOps, SRE, Cloud, Infrastructure, MLOps, and AIOps interview prep — zero-install, browser-based, no API key required.",
+  "description": "Skills and tools for DevOps, SRE, Cloud, Infrastructure, and AIOps — hands-on domain skills (Kubernetes, Terraform, AWS, Linux, and more) plus interview prep. Zero-install, browser-based, no API key required.",
   "owner": {
     "name": "Prakshal Doshi",
     "url": "https://github.com/doshiprakshal"
@@ -43,6 +43,246 @@
         "./interview-flashcards"
       ],
       "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/ai-infra-devops-sre-cloud-interview-coach"
+    },
+    {
+      "name": "kubernetes",
+      "description": "Kubernetes skills for SRE/DevOps — debugging, deployments, networking, scaling, and troubleshooting production clusters.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "container-orchestration",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "kubernetes",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/kubernetes"
+    },
+    {
+      "name": "helm",
+      "description": "Helm chart authoring, templating, releases, and troubleshooting.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "container-orchestration",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "helm",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/helm"
+    },
+    {
+      "name": "terraform",
+      "description": "Terraform module design, state management, drift detection, and workspace strategies.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "infrastructure-as-code",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "terraform",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/terraform"
+    },
+    {
+      "name": "aws",
+      "description": "AWS infrastructure, services, cost optimization, and troubleshooting skills.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "cloud",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "aws",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/aws"
+    },
+    {
+      "name": "github-cicd",
+      "description": "GitHub Actions and CI/CD pipeline design, debugging, and optimization.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "ci-cd",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "github-cicd",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/github-cicd"
+    },
+    {
+      "name": "linux",
+      "description": "Linux systems administration, performance tuning, and troubleshooting.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "operating-systems",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "linux",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/linux"
+    },
+    {
+      "name": "networking",
+      "description": "Networking fundamentals and troubleshooting for distributed systems.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "networking",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "networking",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/networking"
+    },
+    {
+      "name": "observability",
+      "description": "Metrics, logging, tracing, and monitoring skills.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "observability",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "observability",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/observability"
+    },
+    {
+      "name": "incidents",
+      "description": "Incident response, postmortems, and on-call skills.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "incident-response",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "incidents",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/incidents"
+    },
+    {
+      "name": "security",
+      "description": "Security hardening, auditing, and compliance skills for infrastructure and cloud.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "security",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "security",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/security"
+    },
+    {
+      "name": "platform",
+      "description": "Internal developer platforms, golden paths, and platform tooling.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "platform-engineering",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "platform",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/platform"
+    },
+    {
+      "name": "databases",
+      "description": "Database operations, tuning, migrations, and troubleshooting.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "databases",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "databases",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/databases"
+    },
+    {
+      "name": "ai-infra",
+      "description": "Infrastructure for training and serving AI/ML workloads — GPUs, inference, MLOps.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "ai-infrastructure",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "ai-infra",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/ai-infra"
+    },
+    {
+      "name": "sre",
+      "description": "SRE practices — SLOs, error budgets, and reliability engineering.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "sre",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "sre",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/sre"
+    },
+    {
+      "name": "productivity",
+      "description": "Productivity skills for SRE/DevOps engineers — workflows, tooling, and automation.",
+      "author": {
+        "name": "Prakshal Doshi",
+        "url": "https://github.com/doshiprakshal"
+      },
+      "category": "productivity",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/doshiprakshal/claude-skills.git",
+        "path": "productivity",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/productivity"
     }
   ]
 }

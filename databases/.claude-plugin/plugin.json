@@ -1,0 +1,10 @@
+{
+  "name": "databases",
+  "description": "Database operations, tuning, migrations, and troubleshooting.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "databases",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/databases"
+}

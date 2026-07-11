@@ -1,0 +1,10 @@
+{
+  "name": "helm",
+  "description": "Helm chart authoring, templating, releases, and troubleshooting.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "container-orchestration",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/helm"
+}

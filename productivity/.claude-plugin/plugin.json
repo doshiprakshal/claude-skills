@@ -1,0 +1,10 @@
+{
+  "name": "productivity",
+  "description": "Productivity skills for SRE/DevOps engineers \u2014 workflows, tooling, and automation.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "productivity",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/productivity"
+}

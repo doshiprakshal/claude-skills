@@ -1,0 +1,10 @@
+{
+  "name": "security",
+  "description": "Security hardening, auditing, and compliance skills for infrastructure and cloud.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "security",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/security"
+}

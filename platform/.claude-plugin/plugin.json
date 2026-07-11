@@ -1,0 +1,10 @@
+{
+  "name": "platform",
+  "description": "Internal developer platforms, golden paths, and platform tooling.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "platform-engineering",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/platform"
+}

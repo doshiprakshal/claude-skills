@@ -1,0 +1,10 @@
+{
+  "name": "linux",
+  "description": "Linux systems administration, performance tuning, and troubleshooting.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "operating-systems",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/linux"
+}

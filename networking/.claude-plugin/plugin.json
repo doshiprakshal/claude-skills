@@ -1,0 +1,10 @@
+{
+  "name": "networking",
+  "description": "Networking fundamentals and troubleshooting for distributed systems.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "networking",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/networking"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "incidents",
+  "description": "Incident response, postmortems, and on-call skills.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "incident-response",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/incidents"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "observability",
+  "description": "Metrics, logging, tracing, and monitoring skills.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "observability",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/observability"
+}

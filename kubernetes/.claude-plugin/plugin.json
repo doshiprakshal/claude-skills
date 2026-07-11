@@ -1,0 +1,10 @@
+{
+  "name": "kubernetes",
+  "description": "Kubernetes skills for SRE/DevOps \u2014 debugging, deployments, networking, scaling, and troubleshooting production clusters.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "container-orchestration",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/kubernetes"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "aws",
+  "description": "AWS infrastructure, services, cost optimization, and troubleshooting skills.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "cloud",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/aws"
+}

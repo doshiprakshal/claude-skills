@@ -1,0 +1,10 @@
+{
+  "name": "ai-infra",
+  "description": "Infrastructure for training and serving AI/ML workloads \u2014 GPUs, inference, MLOps.",
+  "author": {
+    "name": "Prakshal Doshi",
+    "url": "https://github.com/doshiprakshal"
+  },
+  "category": "ai-infrastructure",
+  "homepage": "https://github.com/doshiprakshal/claude-skills/tree/main/ai-infra"
+}
