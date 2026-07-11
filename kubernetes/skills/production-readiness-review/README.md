@@ -68,56 +68,59 @@ spec:
 
 ### Output (abbreviated)
 
-```markdown
-## Resources discovered
-Deployments: 1
-Services: 1
-HPAs: 1
-PDBs: 0
-
-## Resource relationship validation
-- Service `payments-api-svc` selector `app=payments-api` — no workload has this label (Deployment uses `app=payments`) — **Failed**
-- HPA `payments-api-hpa` scaleTargetRef → Deployment `payments-api` — exists — **Passed**
-- HPA target has resource requests set — **Passed** (cpu request present; scaling will work)
-- PDB selector matches workload — **N/A** (no PDB defined)
-
-## Findings
-
-### PRR-001 — Service selector doesn't match any pod  [Blocker]
-**Finding:** `payments-api-svc` selects `app=payments-api`, but the Deployment's pods are labeled `app=payments`.
-**Why it matters:** The Service has zero endpoints — it's not routing traffic to anything right now.
-**Evidence:** `service.yaml` selector vs. `deployment.yaml` template labels.
-**Recommended fix:** Align the selector to `app: payments` (or relabel the pods) — pick one and make both sides match.
-
-### PRR-002 — Image tag is `latest`  [Blocker]
-**Finding:** Container image is `registry.internal/payments-api:latest`.
-**Why it matters:** Rollouts become non-reproducible and rollback to a known-good image isn't possible.
-**Evidence:** `deployment.yaml` container image.
-**Recommended fix:** Pin to a specific tag or digest.
-
-### PRR-003 — Single replica with an HPA that allows scaling to 1  [Medium — context-dependent]
-**Finding:** `minReplicas: 1` means the app can run on a single pod with no redundancy.
-**Why it matters:** Any node failure or rollout causes a brief full outage; depends on whether "payments-api" is actually latency/availability critical.
-**Evidence:** `hpa.yaml` minReplicas, no PDB present.
-**Recommended fix:** If this service is user-facing/critical, raise `minReplicas` to 2 and add a PDB. Flagged as context-dependent — confirm criticality before treating as a blocker.
-
-### PRR-004 — No readiness probe  [High]
-**Finding:** Container defines no `readinessProbe`.
-**Why it matters:** Kubernetes will route traffic to the pod before the app is actually ready to serve, causing request failures during startup/rollout.
-**Evidence:** `deployment.yaml` container spec.
-**Recommended fix:** Add a `readinessProbe` (HTTP/TCP/exec) matching how the app signals readiness.
-
-## Cannot verify
-- Whether `payments-api` exposes a metrics endpoint (no scrape annotation/ServiceMonitor found — can't confirm without runtime access)
-- Actual traffic pattern / criticality of this service (affects severity of PRR-003)
-
-## Launch Decision
-
-❌ Not ready
-
-**Must fix before launch:** PRR-001, PRR-002
-**Validate before launch (context-dependent):** PRR-003
-**Can improve later:** PRR-004
-```
+> **Resources discovered**
+>
+> | Kind | Count |
+> |---|---|
+> | Deployments | 1 |
+> | Services | 1 |
+> | HPAs | 1 |
+> | PDBs | 0 |
+>
+> **Resource relationship validation**
+>
+> - Service `payments-api-svc` selector `app=payments-api` — no workload has this label (Deployment uses `app=payments`) — **Failed**
+> - HPA `payments-api-hpa` scaleTargetRef → Deployment `payments-api` — exists — **Passed**
+> - HPA target has resource requests set — **Passed** (cpu request present; scaling will work)
+> - PDB selector matches workload — **N/A** (no PDB defined)
+>
+> **Findings**
+>
+> **PRR-001 — Service selector doesn't match any pod** &nbsp;`[Blocker]`
+> - Finding: `payments-api-svc` selects `app=payments-api`, but the Deployment's pods are labeled `app=payments`.
+> - Why it matters: the Service has zero endpoints — it's not routing traffic to anything right now.
+> - Evidence: `service.yaml` selector vs. `deployment.yaml` template labels.
+> - Recommended fix: align the selector to `app: payments` (or relabel the pods) — pick one and make both sides match.
+>
+> **PRR-002 — Image tag is `latest`** &nbsp;`[Blocker]`
+> - Finding: container image is `registry.internal/payments-api:latest`.
+> - Why it matters: rollouts become non-reproducible and rollback to a known-good image isn't possible.
+> - Evidence: `deployment.yaml` container image.
+> - Recommended fix: pin to a specific tag or digest.
+>
+> **PRR-003 — Single replica with an HPA that allows scaling to 1** &nbsp;`[Medium — context-dependent]`
+> - Finding: `minReplicas: 1` means the app can run on a single pod with no redundancy.
+> - Why it matters: any node failure or rollout causes a brief full outage; depends on whether "payments-api" is actually latency/availability critical.
+> - Evidence: `hpa.yaml` minReplicas, no PDB present.
+> - Recommended fix: if this service is user-facing/critical, raise `minReplicas` to 2 and add a PDB. Flagged as context-dependent — confirm criticality before treating as a blocker.
+>
+> **PRR-004 — No readiness probe** &nbsp;`[High]`
+> - Finding: container defines no `readinessProbe`.
+> - Why it matters: Kubernetes will route traffic to the pod before the app is actually ready to serve, causing request failures during startup/rollout.
+> - Evidence: `deployment.yaml` container spec.
+> - Recommended fix: add a `readinessProbe` (HTTP/TCP/exec) matching how the app signals readiness.
+>
+> **Cannot verify**
+>
+> - Whether `payments-api` exposes a metrics endpoint (no scrape annotation/ServiceMonitor found — can't confirm without runtime access)
+> - Actual traffic pattern / criticality of this service (affects severity of PRR-003)
+>
+> **Launch Decision**
+>
+> ❌ Not ready
+>
+> - Must fix before launch: `PRR-001`, `PRR-002`
+> - Validate before launch (context-dependent): `PRR-003`
+> - Can improve later: `PRR-004`
 
 This example is illustrative — a real review depends entirely on what's actually discovered in the target application.
