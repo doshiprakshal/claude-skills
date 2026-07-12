@@ -1,10 +1,10 @@
 # Kubernetes Skills
 
-Planned: 30 skills. 10 built so far.
+Planned: 30 skills. 30 built so far.
 
 Each skill lives in its own subfolder here with a `SKILL.md` (instructions Claude follows when the skill runs) and a `README.md` (what it does, how to invoke it, and a worked example).
 
-## Built
+## Review
 
 | Skill | What it reviews |
 |---|---|
@@ -19,6 +19,36 @@ Each skill lives in its own subfolder here with a `SKILL.md` (instructions Claud
 | [`networking-review`](./networking-review) | Services, Ingress, DNS, NetworkPolicies, and mesh traffic rules — whether traffic actually flows where it should and is blocked where it shouldn't. |
 | [`storage-review`](./storage-review) | PVC/PV binding, StorageClass fit, access modes, reclaim policy, and backup/recovery — catches configurations that risk data loss. |
 
-## Planned
+## Investigate
 
-20 more Kubernetes skills to come as the domain grows toward 30.
+Live-incident diagnosis for a specific symptom — systematically ruling causes in or out with evidence, not guessing at the first plausible explanation.
+
+| Skill | What it diagnoses |
+|---|---|
+| [`crashloopbackoff`](./crashloopbackoff) | Why a pod is in CrashLoopBackOff — app crash, bad probe config, missing config/dependency, OOM disguised as a crash, permissions, bad image/entrypoint. |
+| [`pending-pods`](./pending-pods) | Why a pod is stuck Pending — general triage across resources, affinity/taints, PVCs, quotas, and autoscaler behavior, routing to a deeper skill as needed. |
+| [`oomkilled`](./oomkilled) | Why a pod was OOMKilled — real leak vs. limit too low vs. runtime ignoring the cgroup limit vs. node-level pressure. |
+| [`imagepullbackoff`](./imagepullbackoff) | Why an image won't pull — bad tag, missing/expired credentials, registry rate limiting, architecture mismatch, blocked egress. |
+| [`failedscheduling`](./failedscheduling) | Deep-dive on a confirmed scheduler predicate failure — exact resource/affinity/taint/topology-spread constraint blocking placement. |
+| [`node-not-ready`](./node-not-ready) | Why a node is NotReady — kubelet down, network partition, resource pressure, runtime/CNI failure, underlying infra issue. |
+| [`pvc-issues`](./pvc-issues) | Live PVC problems — stuck binding, multi-attach errors, full volumes, access-mode/zone mismatches. |
+| [`dns-issues`](./dns-issues) | Cluster DNS failures — CoreDNS down/misconfigured, blocked egress to kube-dns, wrong dnsPolicy, bad FQDN usage. |
+| [`service-connectivity`](./service-connectivity) | Why one service can't reach another — zero endpoints, failing readiness, NetworkPolicy blocks, port mismatches, mesh sidecar timing. |
+| [`ingress-issues`](./ingress-issues) | Why external traffic through Ingress is failing — controller down, class mismatch, backend/TLS/routing/DNS issues. |
+
+## Operations
+
+Audits, planners, advisors, and generators — periodic or preparatory work rather than live-incident diagnosis.
+
+| Skill | What it does |
+|---|---|
+| [`upgrade-planner`](./upgrade-planner) | Plans a cluster version upgrade — breaking changes across the full version path, addon compatibility, a sequenced plan. |
+| [`cluster-health-check`](./cluster-health-check) | Fast, live cluster-wide health triage, routing anything abnormal to the right specialist skill. |
+| [`best-practices-audit`](./best-practices-audit) | Fast, breadth-first best-practices scan across many workloads at once, with aggregate counts and pointers to deep-dive skills. |
+| [`namespace-audit`](./namespace-audit) | Single-namespace hygiene — guardrails, orphaned resources, namespace-scoped RBAC. |
+| [`rbac-audit`](./rbac-audit) | Cluster-wide RBAC enumeration — effective permissions per subject, overly broad grants, unused bindings. |
+| [`networkpolicy-audit`](./networkpolicy-audit) | Cluster-wide NetworkPolicy coverage and consistency across namespaces. |
+| [`pdb-review`](./pdb-review) | PodDisruptionBudget coverage and correctness — including whether PDBs collectively block a planned node drain. |
+| [`hpa-vpa-advisor`](./hpa-vpa-advisor) | Recommends concrete HPA/VPA/KEDA configuration based on usage data — or explicitly recommends against autoscaling. |
+| [`deployment-rollout-review`](./deployment-rollout-review) | Reviews a specific rollout for safe progress vs. a regression, recommending continue/pause/rollback with evidence. |
+| [`runbook-generator`](./runbook-generator) | Generates a service-specific incident runbook grounded in its actual configuration and dependencies. |
